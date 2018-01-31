@@ -1,0 +1,57 @@
+* {
+   box-sizing: border-box; 
+  }
+  body {
+    margin: 0;
+	background-repeat:no-repeat;		/*Le background est mis une seule fois dans la page*/
+	background-image: url("images/surveillance.png"); /*Chargement de l 'image*/
+	background-position:95% 50%;		/* On place l'image au millieu*/
+	width: auto;
+	height: auto;
+  }
+  #main {
+    display: flex;
+    min-height: calc(100vh - 40vh);
+  }
+  #main > article {
+    flex: 1;		/*L'article prend toute le place dispo*/
+	
+  }
+  #main > nav
+  {
+    flex: 0 0 15vw;
+    background: beige;
+  }
+
+  #main > nav {
+    order: -1;			/*Le menu se place en 1er*/
+  }
+  header, footer, article, nav, aside {
+    padding: 1em;		/*Les lignes font 1em de haut */
+  }
+  header, footer {
+    background: Silver;
+    height: 20vh;
+	text-align:center;
+	font-family:trebuchet ms; /*Changement police d ecriture*/
+  }
+  
+  h1,h2,h3
+  {
+	text-decoration:underline;
+	text-align:center;
+	font-family:trebuchet ms;
+  }
+article
+{
+		position:relative;	/*Permet de positionner a sa guise les elements*/
+		/*left:50%;
+		bottom :-30%;*/
+}
+.imageflottante
+{
+	float:left;
+	
+}
+
+

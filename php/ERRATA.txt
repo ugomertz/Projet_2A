@@ -1,0 +1,14 @@
+-----------------------------------V1.0------------------------------------------------------
+
+Page de base, liens vers autres pages et fond
+
+
+-----------------------------------V1.1------------------------------------------------------
+
+Ajout du lien de téléchargement de la documentation du site.
+Ajout du lien pour voir la documentation du site.
+
+
+-----------------------------------V2.0-----------------------------------------------------
+
+Changement des images de fond des pages, avec page de style pour chacune d entre elles
