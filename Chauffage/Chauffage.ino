@@ -22,9 +22,9 @@ int temp_ret_ch=0;
 int temp_dep_pch=0;
 int temp_ret_pch=0;
 
-//****Fonction d'envoi de la requête http au serveur****
+//****Fonctions d'envoi des requêtes http au serveur****
 
-void SendRequest(String temp) {
+void SendRequest_dep_ch(String temp_dep_ch) {
   const int httpPort = 80;
   
   //Serial.print("Connecting to ");
@@ -40,13 +40,85 @@ void SendRequest(String temp) {
 
   String url = "/";
   url += streamId;
-  url += "?temp=";
-  url += temp;
+  url += "?temp_dep_ch=";
+  url += temp_dep_ch;
                
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + server + "\r\n" + 
                "Connection: close\r\n\r\n");
-  delay(120000);
+}
+
+void SendRequest_ret_ch(String temp_ret_ch) {
+  const int httpPort = 80;
+  
+  //Serial.print("Connecting to ");
+  //Serial.println(server);
+
+  WiFiClient client;
+  
+  if (!client.connect(server, httpPort)) 
+  {
+  Serial.println("connection failed");
+  return;
+  }
+
+  String url = "/";
+  url += streamId;
+  url += "?temp_ret_ch=";
+  url += temp_ret_ch;
+               
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + server + "\r\n" + 
+               "Connection: close\r\n\r\n");
+}
+
+void SendRequest_dep_ch(String temp_dep_pch) {
+  const int httpPort = 80;
+  
+  //Serial.print("Connecting to ");
+  //Serial.println(server);
+
+  WiFiClient client;
+  
+  if (!client.connect(server, httpPort)) 
+  {
+  Serial.println("connection failed");
+  return;
+  }
+
+  String url = "/";
+  url += streamId;
+  url += "?temp_dep_pch=";
+  url += temp_dep_pch;
+               
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + server + "\r\n" + 
+               "Connection: close\r\n\r\n");
+}
+
+
+void SendRequest_ret_pch(String temp_ret_pch) {
+  const int httpPort = 80;
+  
+  //Serial.print("Connecting to ");
+  //Serial.println(server);
+
+  WiFiClient client;
+  
+  if (!client.connect(server, httpPort)) 
+  {
+  Serial.println("connection failed");
+  return;
+  }
+
+  String url = "/";
+  url += streamId;
+  url += "?temp_ret_pch=";
+  url += temp_ret_pch;
+               
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + server + "\r\n" + 
+               "Connection: close\r\n\r\n");
 }
 //*****************************************************
 
@@ -81,17 +153,19 @@ void setup() {
   //On indique sur le port serie l'adresse ip de l'ESP 
   Serial.println(WiFi.localIP());
 
-  //Démarrage du capteur dht
-  dht.begin();
 }
 
 //****************************************************************
 void loop() {
 
  //Letcure de la température du capteur
- temp = dht.readTemperature();
+
 
  //Envoi de la requête au serveur
- SendRequest(String(temp));
+ SendRequest_dep_ch(String(temp_dep_ch));
+ SendRequest_ret_ch(String(temp_ret_ch));
+ SendRequest_dep_pch(String(temp_dep_pch));
+ SendRequest_dep_ch(String(temp_ret_pch));
+ delay(120000);
  Serial.println("Mesure envoyée");
 }
