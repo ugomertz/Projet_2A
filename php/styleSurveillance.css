@@ -9,6 +9,20 @@
 	width: auto;
 	height: auto;
   }
+
+header {
+	height: 50px
+}
+
+@media(min-width: 600px) {
+	header {
+		height: 155px;	
+	}
+	footer {
+		height: 155px;
+	}
+}
+
   #main {
     display: flex;
     min-height: calc(100vh - 40vh);
@@ -31,7 +45,6 @@
   }
   header, footer {
     background: Silver;
-    height: 20vh;
 	text-align:center;
 	font-family:trebuchet ms; /*Changement police d ecriture*/
   }
@@ -42,12 +55,7 @@
 	text-align:center;
 	font-family:trebuchet ms;
   }
-article
-{
-		position:relative;	/*Permet de positionner a sa guise les elements*/
-		/*left:50%;
-		bottom :-30%;*/
-}
+
 .imageflottante
 {
 	float:left;

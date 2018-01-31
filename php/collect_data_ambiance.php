@@ -1,21 +1,27 @@
 <?php
 
 $temp = $_GET['temp'];
+$hum = $_GET['hum'];
+$date_mes = date("Y-m-d");
+$heure_mes = date("H:i:s");
 
-echo "<h1>debut</h1>";
+echo "$date_mes";
+echo "$heure_mes";
+echo "$temp";
+echo "$hum";
 
 try
 {
-echo "<h1>try</h1>";
-$conn = new PDO('mysql:host=localhost;dbname=test','root','root');
+$conn = new PDO('mysql:host=localhost;dbname=domotique','root','root');
 }
+
 catch(Exception $e)
 {	
-	echo "<h1>bdd erreur</h1>";
 	die('Erreur : '.$e->getMessage());
 }
 
-$conn->exec('INSERT INTO test(temp) VALUES(' . $temp . ')');
+$conn->exec('CREATE TABLE IF NOT EXISTS `Ambiance`(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date_mes DATE, heure_mes TIME, temp INT, hum INT)');
+$conn->exec('INSERT INTO Ambiance(date_mes,heure_mes,temp,hum) VALUES("' . $date_mes . '","' . $heure_mes . '",' . $temp . ',' . $hum . ')');
 
 echo "<h1>The data has been sent!!</h1>";
 ?>

@@ -34,19 +34,21 @@
 
 				try
 				{
-					$bdd = new PDO('mysql:host=localhost;dbname=test','root','root');
+					$bdd = new PDO('mysql:host=localhost;dbname=domotique','root','root');
 				}
 				catch(Exception $e)
 				{
 					die('Erreur : '.$e->getMessage());
 				}
 
-				$reponse = $bdd->query('SELECT * FROM test ORDER BY id DESC LIMIT 1');
+				$reponse = $bdd->query('SELECT * FROM Ambiance ORDER BY id DESC LIMIT 1');
 				while ($donnees = $reponse->fetch())
 				{
 					?>
 					<p>
-					La température relevée est : <?php echo $donnees['temp']; ?> °C <br />
+					La température relevée est : <?php echo $donnees['temp']; ?> °C <br /><br />
+					L'humidité relevé est : <?php echo $donnees['hum']; ?> % </br><br />
+					Dernière mesure le : <?php echo $donnees['date_mes']; ?> à <?php echo $donnees['heure_mes']; ?><br />
 					</p>
 					<?php
 				}
